@@ -7,6 +7,16 @@ function addSetTitleFunctionality() {
     })
 }
 
+function addOpenDialogFunctionality() {
+    const button = document.getElementById("file-dialog-btn");
+    button?.addEventListener("click", async () => {
+        console.log("dasds")
+        const filePath = await window.ElectronAPI.openDialog();
+        const filePathSpan = document.getElementById("selected-file-path");
+        filePathSpan.textContent = filePath;
+    })
+}
+
 function renderTemplate(templateID) {
     const template = document.getElementById(templateID);
     const clone = template.content.cloneNode(true);
@@ -20,3 +30,8 @@ titleNav?.addEventListener("click", (_event) => {
     addSetTitleFunctionality();
 })
 
+const dialogNav = document.getElementById("file-dialog-nav");
+dialogNav.addEventListener("click", (_event) => {
+    renderTemplate("file-dialog-template");
+    addOpenDialogFunctionality()
+})

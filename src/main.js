@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain } = require("electron");
+const { app, BrowserWindow, ipcMain, dialog } = require("electron");
 const path = require("path");
 
 function createWindow() {
@@ -16,6 +16,14 @@ app.whenReady().then(() => {
         const webContents = event.sender;
         const window = BrowserWindow.fromWebContents(webContents);
         window.setTitle(title);
+    })
+    ipcMain.handle("dialog:open", async () => {
+        const { filePaths, canceled } = await dialog.showOpenDialog();
+        let result = undefined
+        if (canceled === false) {
+            result = filePaths[0];
+        }
+        return result;
     })
     app.on("activate", () => {
         if (BrowserWindow.getAllWindows().length === 0) {

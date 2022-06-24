@@ -1,4 +1,4 @@
-#set-title-nav:hover {
+nav>span:hover {
     cursor: pointer;
 }
 

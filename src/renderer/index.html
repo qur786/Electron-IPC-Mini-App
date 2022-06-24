@@ -10,6 +10,7 @@
   <body>
     <nav>
       <span id="set-title-nav">Set Title</span>
+      <span id="file-dialog-nav">Open File Dialog</span>
     </nav>
     <div id="main">Select one of the above options.</div>
     <template id="set-title-template">
@@ -18,6 +19,11 @@
         <input type="text" name="title" id="title" />
         <button id="set-title-btn">Set title</button>
       </div>
+    </template>
+    <template id="file-dialog-template">
+      <h2>Open native file dailog</h2>
+      <p>File path selected: <span id="selected-file-path"></span></p>
+      <button id="file-dialog-btn">Open File Dialog</button>
     </template>
     <script type="module" src="./renderer.js"></script>
   </body>
