@@ -4,12 +4,21 @@
     <meta charset="UTF-8">
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <title>Hello World!</title>
+    <link href="./index.css" rel="stylesheet" />
+    <title>IPC channel App</title>
   </head>
   <body>
-    <h1>Hello World!</h1>
-    We are using Node.js <span id="node-version"></span>,
-    Chromium <span id="chrome-version"></span>,
-    and Electron <span id="electron-version"></span>.
+    <nav>
+      <span id="set-title-nav">Set Title</span>
+    </nav>
+    <div id="main">Select one of the above options.</div>
+    <template id="set-title-template">
+      <h2>Set title through main process</h2>
+      <div>
+        <input type="text" name="title" id="title" />
+        <button id="set-title-btn">Set title</button>
+      </div>
+    </template>
+    <script type="module" src="./renderer.js"></script>
   </body>
 </html>

@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
 
 function createWindow() {
@@ -12,6 +12,11 @@ function createWindow() {
 
 app.whenReady().then(() => {
     createWindow()
+    ipcMain.on("setTitle", (event, title) => {
+        const webContents = event.sender;
+        const window = BrowserWindow.fromWebContents(webContents);
+        window.setTitle(title);
+    })
     app.on("activate", () => {
         if (BrowserWindow.getAllWindows().length === 0) {
             createWindow();

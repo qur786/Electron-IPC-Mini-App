@@ -1,0 +1,19 @@
+#set-title-nav:hover {
+    cursor: pointer;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+}
+
+#main {
+    border: 1px solid black;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 5%;
+    height: 60vh;
+}
